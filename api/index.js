@@ -6,30 +6,39 @@ const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('
 
 const app = express();
 
+// Habilitar el parsing de JSON
 app.use(express.json());
 
-const whitelist = ['http://localhost:8080', ''];
+// Configuración de CORS
+const whitelist = [
+  'http://localhost:8080', // Tu entorno de desarrollo local
+  'https://vercel-gacho-9dmis7yqf-gabriel-santostefanos-projects.vercel.app' // Dominio de Vercel
+];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
       callback(null, true);
     } else {
-      callback(new Error('no permitido'));
+      callback(new Error('No permitido por CORS'));
     }
   }
 };
 app.use(cors(options));
 
+// Rutas base
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
 });
 
+// Ruta adicional
 app.get('/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
 
+// Integrar las rutas de la API
 routerApi(app);
 
+// Middlewares para manejar errores
 app.use(logErrors);
 app.use(ormErrorHandler);
 app.use(boomErrorHandler);
