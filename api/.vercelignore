@@ -1,0 +1,9 @@
+# Ignorar el directorio de migraciones
+db/migrations/
+
+# Ignorar configuraciones locales de VSCode
+.vscode/
+
+# Ignorar archivos de ejemplo y documentación
+frontend.html
+hello_world.txt

@@ -11,8 +11,7 @@ app.use(express.json());
 
 // Configuración de CORS
 const whitelist = [
-  'http://localhost:8080', // Tu entorno de desarrollo local
-  'https://vercel-gacho-a2gmxug9e-gabriel-santostefanos-projects.vercel.app', // Dominio de Vercel
+  'http://localhost:8080', // Tu entorno de desarrollo local // Dominio de Vercel
   'https://vercel-test-tau-dun.vercel.app'
 ];
 const options = {
